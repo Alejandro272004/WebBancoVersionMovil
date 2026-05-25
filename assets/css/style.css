@@ -990,7 +990,7 @@ header h1 {
             max-width: 380px !important;   /* Aumentamos el límite máximo */
             margin: 20px auto !important;
             height: auto !important;
-            aspect-ratio: 310 / 220;       /* Ajustado a las nuevas medidas */
+            aspect-ratio: 290 / 220;       /* Ajustado a las nuevas medidas */
             flex-shrink: 0;
         }
         .dashboard-container .main-content > div:nth-of-type(2),
