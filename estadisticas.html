@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankFlow - Estadísticas</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="dashboard-container">
+
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>Bank<span>Flow</span></h1>
+        </div>
+
+        <nav class="nav-menu">
+            <p class="menu-label">Principal</p>
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-home"></i> Resumen</a>
+            <a href="transferencias.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transferencias</a>
+            <a href="calendario.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendario</a>
+
+            <p class="menu-label">Finanzas</p>
+            <a href="huchas.html" class="nav-link"><i class="fas fa-piggy-bank"></i> Huchas</a>
+            <a href="estadisticas.html" class="nav-link active"><i class="fas fa-chart-line"></i> Estadísticas</a>
+            <a href="tarjetas.html" class="nav-link"><i class="fas fa-credit-card"></i> Mis Tarjetas</a>
+
+            <p class="menu-label">Personal</p>
+            <a href="ajustes.html" class="nav-link"><i class="fas fa-user-cog"></i> Ajustes</a>
+            <a href="soporte.html" class="nav-link"><i class="fas fa-headset"></i> Soporte</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="btn-logout" class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+    <main class="main-content">
+        <header>
+            <h1>Estadísticas de Gastos e Ingresos</h1>
+        </header>
+
+        <section class="stats-container" style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px;">
+            <p style="color: #666; font-size: 0.95rem;">Análisis detallado del flujo de tus finanzas mensuales.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-left: 4px solid #28a745;">
+                    <span style="font-size: 0.8rem; color: #777; text-transform: uppercase; font-weight: bold;">Total Ingresos (Mes)</span>
+                    <h2 id="stats-ingresos" style="color: #28a745; margin-top: 5px;">0.00€</h2>
+                </div>
+                <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-left: 4px solid #b21f1f;">
+                    <span style="font-size: 0.8rem; color: #777; text-transform: uppercase; font-weight: bold;">Total Gastos (Mes)</span>
+                    <h2 id="stats-gastos" style="color: #b21f1f; margin-top: 5px;">0.00€</h2>
+                </div>
+                <div style="background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); border-left: 4px solid #1a2a6c;">
+                    <span style="font-size: 0.8rem; color: #777; text-transform: uppercase; font-weight: bold;">Ahorro Neto</span>
+                    <h2 id="stats-ahorro" style="color: #1a2a6c; margin-top: 5px;">0.00€</h2>
+                </div>
+            </div>
+
+            <div style="background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); min-height: 300px; display: flex; justify-content: center; align-items: center;">
+                <canvas id="graficoFinanzas" style="max-height: 350px; width: 100%;"></canvas>
+            </div>
+        </section>
+    </main>
+</div>
+<script type="module" src="assets/js/estadisticas.js"></script>
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankFlow - Ajustes</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<div class="dashboard-container">
+
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>Bank<span>Flow</span></h1>
+        </div>
+
+        <nav class="nav-menu">
+            <p class="menu-label">Principal</p>
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-home"></i> Resumen</a>
+            <a href="transferencias.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transferencias</a>
+            <a href="calendario.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendario</a>
+
+            <p class="menu-label">Finanzas</p>
+            <a href="huchas.html" class="nav-link"><i class="fas fa-piggy-bank"></i> Huchas</a>
+            <a href="estadisticas.html" class="nav-link"><i class="fas fa-chart-line"></i> Estadísticas</a>
+            <a href="tarjetas.html" class="nav-link"><i class="fas fa-credit-card"></i> Mis Tarjetas</a>
+
+            <p class="menu-label">Personal</p>
+            <a href="ajustes.html" class="nav-link active"><i class="fas fa-user-cog"></i> Ajustes</a>
+            <a href="soporte.html" class="nav-link"><i class="fas fa-headset"></i> Soporte</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="btn-logout" class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+    <main class="main-content">
+        <header><h1>Ajustes de Cuenta</h1></header>
+
+        <div class="settings-wrapper" style="max-width: 600px; display: flex; flex-direction: column; gap: 30px;">
+            <section class="settings-card" style="background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <h2><i class="fas fa-user-circle"></i> Información del Perfil</h2>
+                <div class="input-group"><label>Nombre Completo</label><input type="text" id="setting-name"></div>
+                <div class="input-group"><label>Alias</label><input type="text" id="setting-alias"></div>
+                <div class="input-group"><label>Teléfono</label><input type="tel" id="setting-phone"></div>
+                <div class="input-group">
+                    <label>Divisa</label>
+                    <select id="setting-currency">
+                        <option value="EUR">Euro (€)</option>
+                        <option value="USD">Dólar ($)</option>
+                    </select>
+                </div>
+                <button id="btn-save-profile" class="btn-primary">Guardar Perfil</button>
+            </section>
+
+            <section class="settings-card" style="background: #fff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <h2><i class="fas fa-shield-alt"></i> Seguridad</h2>
+                <div class="input-group"><label>Contraseña Actual</label><input type="password" id="setting-current-pass"></div>
+                <div class="input-group">
+                    <label>Nueva Contraseña</label>
+                    <input type="password" id="setting-new-pass">
+                    <p style="font-size: 0.75rem; color: #666;">Min 8 carac, 1 Mayús, 1 Minús, 1 número y 1 símbolo.</p>
+                </div>
+                <button id="btn-save-security" class="btn-secondary">Actualizar Contraseña</button>
+            </section>
+        </div>
+    </main>
+</div>
+<script type="module" src="assets/js/ajustes.js"></script>
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

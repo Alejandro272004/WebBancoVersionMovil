@@ -1,0 +1,1014 @@
+/* --- VARIABLES GLOBALES --- */
+
+:root {
+
+    --primary-color: #1a2a6c;
+
+    --secondary-color: #b21f1f;
+
+    --accent-color: #00cc88;
+
+    --bg-color: #f0f2f5;
+
+    --sidebar-bg: #1a2a6c;
+
+    --text-main: #2c3e50;
+
+    --text-muted: #7f8c8d;
+
+    --white: #ffffff;
+
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+
+    --border-radius: 12px;
+
+}
+
+
+
+/* --- RESET & BASE --- */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+
+body {
+
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+    background-color: var(--bg-color);
+
+    color: var(--text-main);
+
+    line-height: 1.5;
+
+}
+
+
+
+/* --- LOGIN & REGISTRO --- */
+
+.login-container {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 100vh;
+
+    padding: 20px;
+
+    background: linear-gradient(135deg, var(--primary-color), #f24645);
+
+}
+
+
+
+.login-box {
+
+    background: var(--white);
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: var(--shadow-lg);
+
+    text-align: center;
+
+    width: 100%;
+
+    max-width: 450px;
+
+}
+
+
+
+.input-group {
+
+    text-align: left;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.input-group label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+
+    font-size: 0.85rem;
+
+    color: var(--text-muted);
+
+}
+
+
+
+.input-group input {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #e0e6ed;
+
+    border-radius: 10px;
+
+    font-size: 1rem;
+
+    transition: 0.3s;
+
+}
+
+
+
+.input-group input:focus {
+
+    border-color: var(--primary-color);
+
+    outline: none;
+
+    box-shadow: 0 0 0 4px rgba(26, 42, 108, 0.1);
+
+}
+
+
+
+.btn-login, .btn-primary {
+
+    width: 100%;
+
+    padding: 14px;
+
+    background-color: var(--primary-color);
+
+    color: white;
+
+    border: none;
+
+    border-radius: 10px;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+
+.btn-login:hover, .btn-primary:hover {
+
+    background-color: #121d4b;
+
+    transform: translateY(-1px);
+
+}
+
+
+
+/* --- DASHBOARD LAYOUT (Sidebar a la derecha) --- */
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row; /* CAMBIADO: Antes era row-reverse */
+}
+
+
+
+.sidebar {
+
+    width: 280px;
+
+    min-width: 280px;
+
+    background-color: var(--sidebar-bg);
+
+    color: var(--white);
+
+    padding: 30px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    position: sticky;
+
+    top: 0;
+
+    height: 100vh;
+
+}
+
+
+
+.main-content {
+
+    flex: 1;
+
+    padding: 40px;
+
+    overflow-y: auto;
+
+}
+
+
+
+/* --- SIDEBAR COMPONENTS --- */
+
+.sidebar .logo {
+
+    margin-bottom: 40px;
+
+    text-align: center;
+
+}
+
+
+
+.sidebar .logo h1 {
+
+    font-size: 1.8rem;
+
+    color: var(--white);
+
+}
+
+
+
+.sidebar .logo span {
+
+    color: var(--accent-color);
+
+}
+
+
+
+.menu-label {
+
+    font-size: 0.7rem;
+
+    text-transform: uppercase;
+
+    color: rgba(255, 255, 255, 0.5);
+
+    letter-spacing: 1.5px;
+
+    margin: 25px 0 10px 10px;
+
+}
+
+
+
+.nav-link {
+
+    display: flex;
+
+    align-items: center;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    text-decoration: none;
+
+    padding: 12px 15px;
+
+    border-radius: 12px;
+
+    margin-bottom: 5px;
+
+    transition: 0.3s;
+
+}
+
+
+
+.nav-link i {
+
+    width: 25px;
+
+    font-size: 1.1rem;
+
+    margin-right: 12px;
+
+}
+
+
+
+.nav-link:hover, .nav-link.active {
+
+    background: rgba(255, 255, 255, 0.1);
+
+    color: var(--accent-color);
+
+    transform: translateX(-5px); /* Movimiento inverso por estar a la derecha */
+
+}
+
+
+
+.sidebar-footer {
+
+    margin-top: auto;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+}
+
+
+
+.btn-logout {
+
+    width: 100%;
+
+    background: rgba(255, 71, 87, 0.1);
+
+    color: #ff4757;
+
+    border: 1px solid rgba(255, 71, 87, 0.2);
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+
+}
+
+
+
+.btn-logout:hover {
+
+    background: #ff4757;
+
+    color: white;
+
+}
+
+
+
+/* --- MAIN CONTENT COMPONENTS --- */
+
+header {
+
+    margin-bottom: 40px;
+
+}
+
+
+
+header h1 {
+
+    font-size: 2rem;
+
+    color: var(--primary-color);
+
+    font-weight: 800;
+
+}
+
+
+
+.balance-card {
+
+    background: linear-gradient(135deg, var(--primary-color), #2a5298);
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    color: white;
+
+    box-shadow: var(--shadow-lg);
+
+    margin-bottom: 40px;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+
+
+.balance-card::after {
+
+    content: '';
+
+    position: absolute;
+
+    top: -50px;
+
+    right: -50px;
+
+    width: 200px;
+
+    height: 200px;
+
+    background: rgba(255,255,255,0.05);
+
+    border-radius: 50%;
+
+}
+
+
+
+.balance-card p {
+
+    font-size: 0.9rem;
+
+    opacity: 0.8;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 10px;
+
+}
+
+
+
+.balance-card h2 {
+
+    font-size: 3.5rem;
+
+    font-weight: 800;
+
+}
+
+
+
+/* Quick Actions */
+
+.quick-actions {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 40px;
+
+}
+
+
+
+.action-card {
+
+    background: var(--white);
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    box-shadow: var(--shadow-sm);
+
+    transition: 0.3s;
+
+    cursor: pointer;
+
+    text-decoration: none;
+
+    color: var(--text-main);
+
+}
+
+
+
+.action-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow-md);
+
+    color: var(--primary-color);
+
+}
+
+
+
+.action-card i {
+
+    font-size: 1.5rem;
+
+    margin-bottom: 10px;
+
+    color: var(--accent-color);
+
+}
+
+
+
+/* Transactions Table */
+
+.transactions {
+
+    background: var(--white);
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: var(--shadow-sm);
+
+}
+
+
+
+.transactions h3 {
+
+    margin-bottom: 20px;
+
+    font-size: 1.2rem;
+
+}
+
+
+
+.transaction-item {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #f0f2f5;
+
+}
+
+
+
+.transaction-item:last-child {
+
+    border-bottom: none;
+
+}
+
+
+
+.trans-info {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+
+.trans-info strong {
+
+    font-size: 1rem;
+
+}
+
+
+
+.trans-info span {
+
+    font-size: 0.85rem;
+
+    color: var(--text-muted);
+
+}
+
+
+
+.trans-amount {
+
+    font-weight: 700;
+
+}
+
+
+
+.trans-amount.positive {
+
+    color: var(--accent-color);
+
+}
+
+
+
+.trans-amount.negative {
+
+    color: #ff4757;
+
+}
+
+
+
+/* Huchas Grid */
+
+.huchas-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+    gap: 25px;
+
+}
+
+
+
+.hucha-item {
+
+    background: var(--white);
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    box-shadow: var(--shadow-sm);
+
+}
+
+
+
+.progress-bar {
+
+    height: 8px;
+
+    background: #e0e6ed;
+
+    border-radius: 4px;
+
+    margin: 15px 0;
+
+    overflow: hidden;
+
+}
+
+
+
+.progress-bar div {
+
+    height: 100%;
+
+    background: var(--accent-color);
+
+    border-radius: 4px;
+
+}
+
+
+
+.add-hucha-card {
+
+    background: dashed #cbd5e0;
+
+    border: 2px dashed #a0aec0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    cursor: pointer;
+
+    color: #718096;
+
+    transition: 0.3s;
+
+}
+
+
+
+.add-hucha-card:hover {
+
+    background: #edf2f7;
+
+    border-color: var(--primary-color);
+
+    color: var(--primary-color);
+
+}
+
+
+
+/* Forms */
+
+.transfer-form-container, .settings-form {
+
+    background: var(--white);
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    max-width: 600px;
+
+    box-shadow: var(--shadow-sm);
+
+}
+
+
+
+@media (max-width: 1024px) {
+
+    /* BUSCA ESTO Y MODIFÍCALO */
+
+    /* --- DASHBOARD LAYOUT (Sidebar a la izquierda) --- */
+    .dashboard-container {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: row; /* CAMBIADO: Antes era row-reverse */
+    }
+
+
+
+    .sidebar {
+
+        width: 260px;
+
+        min-width: 260px;
+
+        background-color: var(--sidebar-bg);
+
+        color: var(--white);
+
+        padding: 30px 20px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        position: fixed; /* CAMBIADO: Fixed es mejor para que no se mueva al hacer scroll */
+
+        left: 0;
+
+        top: 0;
+
+        height: 100vh;
+
+        z-index: 1000;
+
+    }
+
+
+
+    .main-content {
+
+        flex: 1;
+
+        margin-left: 260px; /* AÑADIDO: Para que el contenido no se meta debajo de la sidebar */
+
+        padding: 40px;
+
+        background-color: var(--bg-color);
+
+        min-height: 100vh;
+
+    }
+
+
+
+    /* Ajuste del hover (ahora hacia la derecha) */
+
+    .nav-link:hover, .nav-link.active {
+
+        background: rgba(255, 255, 255, 0.1);
+
+        color: var(--accent-color);
+
+        transform: translateX(5px); /* CAMBIADO: De -5px a 5px */
+
+    }
+
+}
+
+.visa-card {
+
+    width: 380px;
+
+    height: 220px;
+
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f); /* Colores de tu marca */
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    color: white;
+
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: transform 0.3s ease;
+
+}
+
+
+
+.visa-card:hover {
+
+    transform: translateY(-10px); /* Se mueve al pasar el ratón */
+
+}
+
+
+
+.chip {
+
+    width: 45px;
+
+    height: 35px;
+
+    background: linear-gradient(135deg, #ffd700, #b8860b);
+
+    border-radius: 6px;
+
+    margin: 20px 0;
+
+}
+
+
+
+.card-number {
+
+    font-family: 'OCR A Std', monospace; /* Fuente tipica de tarjeta */
+
+    font-size: 1.1rem;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.card-details {
+
+    display: flex;
+
+    justify-content: space-between;
+
+}
+
+
+
+.label { font-size: 0.6rem; opacity: 0.7; letter-spacing: 1px; }
+
+.value { font-size: 0.9rem; font-weight: bold; display: block; }
+
+.main-content {
+
+    padding: 40px; /* Dale espacio a todo el contenido */
+
+}
+
+
+
+.visa-card {
+
+    margin-top: 20px; /* Separa la tarjeta del título "Mis Tarjetas" */
+
+}
+
+/* Ajuste para que el IBAN quepa en la tarjeta de image_94e55b.png */
+
+.card-number {
+
+    font-family: 'OCR A Std', monospace;
+
+    font-size: 1rem; /* Bajamos de 1.1 a 1 para que no salte de línea */
+
+    letter-spacing: 1.5px;
+
+    margin: 15px 0;
+
+    display: block;
+
+    width: 100%;
+
+}
+
+
+
+.card-details {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-end; /* Alinea titular y saldo abajo */
+
+    margin-top: 10px;
+
+}
+/* --- LÓGICA RESPONSIVE DEFINITIVA --- */
+
+/* 1. Reset para el botón en escritorio */
+.container-copiar {
+    margin-top: 25px;
+    width: 380px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+/* 2. Reglas para móvil */
+@media (max-width: 1024px) {
+    .sidebar { position: fixed; left: -280px; z-index: 1000; transition: 0.3s; height: 100vh; overflow-y: auto; }
+    .sidebar.active { left: 0; }
+    .menu-toggle { display: block !important; position: fixed; top: 15px; left: 15px; z-index: 1100; font-size: 1.5rem; color: var(--primary-color); background: var(--white); padding: 10px 15px; border-radius: 8px; box-shadow: var(--shadow-sm); }
+    .main-content { margin-left: 0 !important; padding: 80px 15px 20px 15px !important; }
+
+    /* --- AJUSTE PRECISO: TARJETA Y BOTÓN --- */
+
+    @media (max-width: 1024px) {
+        /* 1. Aseguramos que la tarjeta no se deforme */
+        .visa-card {
+            width: 320px !important;    /* Un ancho fijo que cabe en cualquier móvil */
+            margin: 20px auto !important; /* Centrado absoluto */
+            height: 200px !important;    /* Altura fija para mantener proporción */
+            flex-shrink: 0;              /* Evita que se encoja */
+        }
+
+        /* 2. Limpiamos el contenedor del botón que tiene el estilo inline */
+        .main-content > div:last-of-type {
+            width: 320px !important;    /* Mismo ancho que la tarjeta */
+            margin: 0 auto !important;   /* Centrado */
+            display: flex !important;
+            justify-content: center !important;
+            padding: 0 !important;
+        }
+
+        /* 3. Botón de copiar */
+        #btn-copiar-iban {
+            width: 100% !important;     /* Ocupa el 100% del contenedor padre (320px) */
+        }
+        .visa-card {
+            width: 94% !important;         /* Un poco más de ancho */
+            max-width: 380px !important;   /* Aumentamos el límite máximo */
+            margin: 20px auto !important;
+            height: auto !important;
+            aspect-ratio: 340 / 220;       /* Ajustado a las nuevas medidas */
+            flex-shrink: 0;
+        }
+        .dashboard-container .main-content > div:nth-of-type(2),
+        .actions-container {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-around !important;
+            width: 100% !important;
+            padding: 0 10px !important;
+            box-sizing: border-box !important;
+        }
+
+        /* 2. Forzamos a que cada botón sea exactamente 1/3 del ancho */
+        .dashboard-container .main-content > div:nth-of-type(2) > *,
+        .actions-container > * {
+            flex: 1 !important;
+            width: 30% !important; /* Aproximadamente 1/3 */
+            margin: 0 5px !important;
+            max-width: 120px !important;
+        }
+    }

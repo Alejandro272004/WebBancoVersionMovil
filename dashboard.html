@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankFlow - Mi Panel</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<div class="dashboard-container">
+
+    <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+    </div>
+
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>Bank<span>Flow</span></h1>
+        </div>
+
+        <nav class="nav-menu">
+            <p class="menu-label">Principal</p>
+            <a href="dashboard.html" class="nav-link active"><i class="fas fa-home"></i> Resumen</a>
+            <a href="transferencias.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transferencias</a>
+            <a href="calendario.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendario</a>
+
+            <p class="menu-label">Finanzas</p>
+            <a href="huchas.html" class="nav-link"><i class="fas fa-piggy-bank"></i> Huchas</a>
+            <a href="estadisticas.html" class="nav-link"><i class="fas fa-chart-line"></i> Estadísticas</a>
+            <a href="tarjetas.html" class="nav-link"><i class="fas fa-credit-card"></i> Mis Tarjetas</a>
+
+            <p class="menu-label">Personal</p>
+            <a href="ajustes.html" class="nav-link"><i class="fas fa-user-cog"></i> Ajustes</a>
+            <a href="soporte.html" class="nav-link"><i class="fas fa-headset"></i> Soporte</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="btn-logout" class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+        <main class="main-content">
+            <header>
+                <h1>Bienvenido, <span id="user-name">...</span></h1>
+                <p>Aquí tienes el resumen de tus finanzas hoy.</p>
+            </header>
+
+            <section class="balance-card">
+                <p>Saldo Total Disponible</p>
+                <h2 id="user-balance">0.00€</h2>
+            </section>
+
+            <div class="quick-actions">
+                <a href="transferencias.html" class="action-card">
+                    <i class="fas fa-paper-plane"></i>
+                    <p>Enviar Dinero</p>
+                </a>
+                <a href="huchas.html" class="action-card">
+                    <i class="fas fa-plus"></i>
+                    <p>Ahorrar</p>
+                </a>
+                <a href="tarjetas.html" class="action-card">
+                    <i class="fas fa-lock"></i>
+                    <p>Ver Tarjeta</p>
+                </a>
+            </div>
+
+            <section class="transactions">
+                <div class="section-header">
+                    <h3>Últimos Movimientos</h3>
+                </div>
+                <div id="transactions-list">
+                    <!-- Los movimientos se cargan desde dashboard.js -->
+                    <p class="empty-msg">No hay movimientos recientes.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/dashboard.js"></script>
+</body>
+</html>
