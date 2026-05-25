@@ -1011,4 +1011,18 @@ header h1 {
             margin: 0 5px !important;
             max-width: 120px !important;
         }
+        body, html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+    }
+
+    /* 2. Tarjeta totalmente fluida */
+    .visa-card {
+        width: 90% !important;        /* Ocupa el 90% del ancho del móvil */
+        max-width: 350px !important;  /* No más de 350px para mantener estética */
+        margin: 20px auto !important; /* Centrado perfecto */
+        height: auto !important;
+        aspect-ratio: 350 / 220;     /* Mantiene la proporción sin cortarse */
+        box-sizing: border-box !important;
+    }
     }
