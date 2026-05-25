@@ -1022,7 +1022,7 @@ header h1 {
         max-width: 350px !important;  /* No más de 350px para mantener estética */
         margin: 20px auto !important; /* Centrado perfecto */
         height: auto !important;
-        aspect-ratio: 200 / 220;     /* Mantiene la proporción sin cortarse */
+        aspect-ratio: 260 / 220;     /* Mantiene la proporción sin cortarse */
         box-sizing: border-box !important;
     }
     }
