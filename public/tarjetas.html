@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankFlow - Mis Tarjetas</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>Bank<span>Flow</span></h1>
+        </div>
+
+        <nav class="nav-menu">
+            <p class="menu-label">Principal</p>
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-home"></i> Resumen</a>
+            <a href="transferencias.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transferencias</a>
+            <a href="calendario.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendario de Pagos</a>
+
+            <p class="menu-label">Finanzas</p>
+            <a href="huchas.html" class="nav-link"><i class="fas fa-piggy-bank"></i> Huchas de Ahorro</a>
+            <a href="estadisticas.html" class="nav-link"><i class="fas fa-chart-line"></i> Estadísticas</a>
+            <a href="tarjetas.html" class="nav-link active"><i class="fas fa-credit-card"></i> Mis Tarjetas</a>
+
+            <p class="menu-label">Personal</p>
+            <a href="ajustes.html" class="nav-link"><i class="fas fa-user-cog"></i> Ajustes</a>
+            <a href="soporte.html" class="nav-link"><i class="fas fa-headset"></i> Soporte</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button id="btn-logout" class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <h1>Mis Tarjetas</h1>
+        </header>
+
+        <div class="visa-card">
+            <div class="logo-bank">BankFlow</div>
+            <div class="chip"></div>
+            <div class="card-number" id="user-iban">ES00 0000 0000 0000 0000 0000</div>
+
+            <div class="card-details">
+                <div class="detail">
+                    <span class="label">TITULAR</span>
+                    <span class="value" id="user-name">CARGANDO...</span>
+                </div>
+                <div class="detail">
+                    <span class="label">SALDO</span>
+                    <span class="value" id="user-saldo">0.00 €</span>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 25px; width: 380px; display: flex; justify-content: flex-start;">
+            <button id="btn-copiar-iban" class="btn-primary" style="background: #1a2a6c; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 10px; font-weight: 600; box-shadow: 0 4px 10px rgba(26,42,108,0.2);">
+                <i class="fas fa-copy"></i> Copiar número de cuenta
+            </button>
+        </div>
+    </main>
+</div>
+<button id="btn-chat-toggle" class="chat-fab">
+    <span class="chat-icon">💬</span> Asistente IA
+</button>
+
+<div id="chat-container" class="chat-window" style="display: none;">
+    <div class="chat-header">
+        <span>Asistente BankFlow</span>
+        <button id="btn-close-chat" class="close-btn">×</button>
+    </div>
+    <div id="chat-messages" class="chat-body">
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="chat-input" placeholder="Escribe tu consulta...">
+    </div>
+</div>
+<script>
+  const _toggle = document.getElementById('sidebar-toggle');
+  const _sidebar = document.querySelector('.sidebar');
+  const _overlay = document.getElementById('sidebar-overlay');
+  if (_toggle && _sidebar && _overlay) {
+    _toggle.addEventListener('click', () => {
+      _sidebar.classList.toggle('open');
+      _overlay.classList.toggle('active');
+    });
+    _overlay.addEventListener('click', () => {
+      _sidebar.classList.remove('open');
+      _overlay.classList.remove('active');
+    });
+  }
+</script>
+<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/tarjetas.js"></script>
+<script type="module" src="assets/js/transferencias.js"></script>
+</body>
+</html>

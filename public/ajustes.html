@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankFlow - Ajustes</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .settings-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 620px;
+        }
+        .settings-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        .settings-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 24px;
+            border-bottom: 1px solid #f0f2f5;
+        }
+        .settings-card-header .icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .settings-card-header h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a2a6c;
+            margin: 0;
+        }
+        .settings-card-header p {
+            font-size: 0.8rem;
+            color: #999;
+            margin: 2px 0 0;
+        }
+        .settings-card-body {
+            padding: 22px 24px;
+        }
+        .settings-card-body .input-group {
+            margin-bottom: 16px;
+        }
+        .settings-card-body .input-group:last-of-type {
+            margin-bottom: 20px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f5;
+            font-size: 0.9rem;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-row span:first-child { color: #777; }
+        .info-row span:last-child  { font-weight: 600; color: #2c3e50; }
+        .info-row .copy-btn {
+            background: none;
+            border: none;
+            color: #1a2a6c;
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+        .info-row .copy-btn:hover { background: #f0f2f5; }
+        .btn-danger {
+            width: 100%;
+            padding: 12px;
+            background: rgba(178,31,31,0.07);
+            color: #b21f1f;
+            border: 1px solid rgba(178,31,31,0.2);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-danger:hover { background: #b21f1f; color: white; }
+    </style>
+</head>
+<body>
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo"><h1>Bank<span>Flow</span></h1></div>
+            <nav class="nav-menu">
+                <p class="menu-label">Principal</p>
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-home"></i> Resumen</a>
+                <a href="transferencias.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transferencias</a>
+                <a href="calendario.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendario de Pagos</a>
+                <p class="menu-label">Finanzas</p>
+                <a href="huchas.html" class="nav-link"><i class="fas fa-piggy-bank"></i> Huchas de Ahorro</a>
+                <a href="estadisticas.html" class="nav-link"><i class="fas fa-chart-line"></i> Estadísticas</a>
+                <a href="tarjetas.html" class="nav-link"><i class="fas fa-credit-card"></i> Mis Tarjetas</a>
+                <p class="menu-label">Personal</p>
+                <a href="ajustes.html" class="nav-link active"><i class="fas fa-user-cog"></i> Ajustes</a>
+                <a href="soporte.html" class="nav-link"><i class="fas fa-headset"></i> Soporte</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="btn-logout" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Ajustes de Cuenta</h1>
+                <p style="color:#777; margin-top:4px;">Gestiona tu perfil y seguridad.</p>
+            </header>
+
+            <div class="settings-grid">
+
+                <!-- Tarjeta: Información de cuenta -->
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <div class="icon" style="background:#e8f0fe;">
+                            <i class="fas fa-id-card" style="color:#1a2a6c;"></i>
+                        </div>
+                        <div>
+                            <h3>Información de cuenta</h3>
+                            <p>Tus datos registrados en BankFlow</p>
+                        </div>
+                    </div>
+                    <div class="settings-card-body">
+                        <div class="info-row">
+                            <span>Nombre</span>
+                            <span id="info-nombre">—</span>
+                        </div>
+                        <div class="info-row">
+                            <span>Correo</span>
+                            <span id="info-email">—</span>
+                        </div>
+                        <div class="info-row">
+                            <span>IBAN</span>
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span id="info-iban" style="font-family:monospace; font-size:0.85rem;">—</span>
+                                <button class="copy-btn" id="btn-copiar-iban-ajustes" title="Copiar IBAN">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <span>Miembro desde</span>
+                            <span id="info-fecha">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarjeta: Cambiar nombre -->
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <div class="icon" style="background:#e6fff5;">
+                            <i class="fas fa-user-edit" style="color:#00cc88;"></i>
+                        </div>
+                        <div>
+                            <h3>Cambiar nombre</h3>
+                            <p>Actualiza cómo te mostramos en la app</p>
+                        </div>
+                    </div>
+                    <div class="settings-card-body">
+                        <div class="input-group">
+                            <label>Nuevo nombre</label>
+                            <input type="text" id="setting-name" placeholder="Tu nombre completo">
+                        </div>
+                        <button class="btn-primary" id="btn-guardar-nombre">
+                            <i class="fas fa-save" style="margin-right:8px;"></i>Guardar nombre
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta: Cambiar contraseña -->
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <div class="icon" style="background:#fff8e1;">
+                            <i class="fas fa-lock" style="color:#f59e0b;"></i>
+                        </div>
+                        <div>
+                            <h3>Cambiar contraseña</h3>
+                            <p>Mínimo 8 caracteres con mayúscula, número y símbolo</p>
+                        </div>
+                    </div>
+                    <div class="settings-card-body">
+                        <div class="input-group">
+                            <label>Nueva contraseña</label>
+                            <input type="password" id="setting-password" placeholder="••••••••">
+                        </div>
+                        <div class="input-group">
+                            <label>Confirmar contraseña</label>
+                            <input type="password" id="setting-password-confirm" placeholder="••••••••">
+                        </div>
+                        <button class="btn-primary" id="btn-guardar-password">
+                            <i class="fas fa-shield-alt" style="margin-right:8px;"></i>Actualizar contraseña
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta: Zona de peligro -->
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <div class="icon" style="background:#fce8e8;">
+                            <i class="fas fa-exclamation-triangle" style="color:#b21f1f;"></i>
+                        </div>
+                        <div>
+                            <h3>Zona de seguridad</h3>
+                            <p>Acciones que afectan al acceso de tu cuenta</p>
+                        </div>
+                    </div>
+                    <div class="settings-card-body">
+                        <button class="btn-danger" id="btn-cerrar-sesion-all">
+                            <i class="fas fa-sign-out-alt" style="margin-right:8px;"></i>Cerrar sesión en todos los dispositivos
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <button id="btn-chat-toggle" class="chat-fab">
+        <span class="chat-icon">💬</span> Asistente IA
+    </button>
+    <div id="chat-container" class="chat-window" style="display: none;">
+        <div class="chat-header">
+            <span>Asistente BankFlow</span>
+            <button id="btn-close-chat" class="close-btn">×</button>
+        </div>
+        <div id="chat-messages" class="chat-body"></div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Escribe tu consulta...">
+        </div>
+    </div>
+
+    <script>
+  const _toggle = document.getElementById('sidebar-toggle');
+  const _sidebar = document.querySelector('.sidebar');
+  const _overlay = document.getElementById('sidebar-overlay');
+  if (_toggle && _sidebar && _overlay) {
+    _toggle.addEventListener('click', () => {
+      _sidebar.classList.toggle('open');
+      _overlay.classList.toggle('active');
+    });
+    _overlay.addEventListener('click', () => {
+      _sidebar.classList.remove('open');
+      _overlay.classList.remove('active');
+    });
+  }
+</script>
+    <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/ajustes.js"></script>
+    <script type="module" src="assets/js/transferencias.js"></script>
+</body>
+</html>

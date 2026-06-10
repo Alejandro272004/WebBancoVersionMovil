@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankFlow - Transferencias</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Bank<span>Flow</span></h1>
+            </div>
+
+            <nav class="nav-menu">
+                <p class="menu-label">Principal</p>
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-home"></i> Resumen</a>
+                <a href="transferencias.html" class="nav-link active"><i class="fas fa-exchange-alt"></i> Transferencias</a>
+                <a href="calendario.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendario de Pagos</a>
+
+                <p class="menu-label">Finanzas</p>
+                <a href="huchas.html" class="nav-link"><i class="fas fa-piggy-bank"></i> Huchas de Ahorro</a>
+                <a href="estadisticas.html" class="nav-link"><i class="fas fa-chart-line"></i> Estadísticas</a>
+                <a href="tarjetas.html" class="nav-link"><i class="fas fa-credit-card"></i> Mis Tarjetas</a>
+
+                <p class="menu-label">Personal</p>
+                <a href="ajustes.html" class="nav-link"><i class="fas fa-user-cog"></i> Ajustes</a>
+                <a href="soporte.html" class="nav-link"><i class="fas fa-headset"></i> Soporte</a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="btn-logout" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Transferencias</h1>
+            </header>
+
+            <section class="transfer-form-container">
+                <form id="transfer-form">
+                    <div class="input-group">
+                        <label for="destinatario">Destinatario (IBAN)</label>
+                        <input type="text" id="destinatario" placeholder="ES00 0000 0000 0000 0000 0000" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="monto">Importe (€)</label>
+                        <input type="number" id="monto" placeholder="0.00" step="0.01" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="concepto">Concepto</label>
+                        <input type="text" id="concepto" placeholder="Ej. Alquiler">
+                    </div>
+                    <button type="submit" class="btn-primary">Realizar Transferencia</button>
+                </form>
+            </section>
+        </main>
+    </div>
+    <button id="btn-chat-toggle" class="chat-fab">
+        <span class="chat-icon">💬</span> Asistente IA
+    </button>
+
+    <div id="chat-container" class="chat-window" style="display: none;">
+        <div class="chat-header">
+            <span>Asistente BankFlow</span>
+            <button id="btn-close-chat" class="close-btn">×</button>
+        </div>
+        <div id="chat-messages" class="chat-body">
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Escribe tu consulta...">
+        </div>
+    </div>
+    <script>
+  const _toggle = document.getElementById('sidebar-toggle');
+  const _sidebar = document.querySelector('.sidebar');
+  const _overlay = document.getElementById('sidebar-overlay');
+  if (_toggle && _sidebar && _overlay) {
+    _toggle.addEventListener('click', () => {
+      _sidebar.classList.toggle('open');
+      _overlay.classList.toggle('active');
+    });
+    _overlay.addEventListener('click', () => {
+      _sidebar.classList.remove('open');
+      _overlay.classList.remove('active');
+    });
+  }
+</script>
+    <!-- Scripts -->
+    <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/transferencias.js"></script>
+</body>
+</html>

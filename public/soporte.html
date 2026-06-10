@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankFlow - Soporte</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .support-hero {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f);
+            border-radius: 20px;
+            padding: 40px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 30px rgba(26,42,108,0.25);
+        }
+        .support-hero-icon {
+            font-size: 3.5rem;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .support-hero h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 6px; }
+        .support-hero p  { opacity: 0.85; font-size: 0.95rem; }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+        .support-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        .support-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .support-card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        .support-card h3 { font-size: 1rem; font-weight: 700; color: #1a2a6c; margin-bottom: 4px; }
+        .support-card p  { font-size: 0.85rem; color: #777; line-height: 1.5; }
+
+        .support-faq {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .support-faq h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a2a6c;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f2f5;
+        }
+        .faq-item {
+            border-bottom: 1px solid #f0f2f5;
+            padding: 14px 0;
+        }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.92rem;
+            color: #2c3e50;
+            gap: 10px;
+        }
+        .faq-question i { color: #1a2a6c; transition: transform 0.3s; flex-shrink: 0; }
+        .faq-answer {
+            display: none;
+            font-size: 0.87rem;
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.6;
+        }
+        .faq-item.open .faq-answer { display: block; }
+        .faq-item.open .faq-question i { transform: rotate(180deg); }
+    </style>
+</head>
+<body>
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Bank<span>Flow</span></h1>
+            </div>
+            <nav class="nav-menu">
+                <p class="menu-label">Principal</p>
+                <a href="dashboard.html" class="nav-link"><i class="fas fa-home"></i> Resumen</a>
+                <a href="transferencias.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transferencias</a>
+                <a href="calendario.html" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendario de Pagos</a>
+                <p class="menu-label">Finanzas</p>
+                <a href="huchas.html" class="nav-link"><i class="fas fa-piggy-bank"></i> Huchas de Ahorro</a>
+                <a href="estadisticas.html" class="nav-link"><i class="fas fa-chart-line"></i> Estadísticas</a>
+                <a href="tarjetas.html" class="nav-link"><i class="fas fa-credit-card"></i> Mis Tarjetas</a>
+                <p class="menu-label">Personal</p>
+                <a href="ajustes.html" class="nav-link"><i class="fas fa-user-cog"></i> Ajustes</a>
+                <a href="soporte.html" class="nav-link active"><i class="fas fa-headset"></i> Soporte</a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="btn-logout" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1>Centro de Soporte</h1>
+                <p style="color:#777; margin-top:4px;">Estamos aquí para ayudarte con lo que necesites.</p>
+            </header>
+
+            <!-- Hero -->
+            <div class="support-hero">
+                <div class="support-hero-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <div>
+                    <h2>¿En qué podemos ayudarte?</h2>
+                    <p>Nuestro equipo de soporte está disponible de lunes a viernes, de 9:00 a 20:00 h. Tiempo medio de respuesta: menos de 2 horas.</p>
+                </div>
+            </div>
+
+            <!-- Tarjetas de contacto -->
+            <div class="support-grid">
+                <div class="support-card" onclick="Swal.fire({icon:'info', title:'Email de soporte', text:'soporte@bankflow.com', confirmButtonColor:'#1a2a6c'})">
+                    <div class="support-card-icon" style="background:#e8f0fe;">
+                        <i class="fas fa-envelope" style="color:#1a2a6c;"></i>
+                    </div>
+                    <div>
+                        <h3>Correo Electrónico</h3>
+                        <p>soporte@bankflow.com<br>Respuesta en menos de 2 h</p>
+                    </div>
+                </div>
+
+                <div class="support-card" onclick="Swal.fire({icon:'info', title:'Teléfono de soporte', text:'+34 900 000 000 (gratuito)', confirmButtonColor:'#1a2a6c'})">
+                    <div class="support-card-icon" style="background:#fce8e8;">
+                        <i class="fas fa-phone-alt" style="color:#b21f1f;"></i>
+                    </div>
+                    <div>
+                        <h3>Teléfono</h3>
+                        <p>+34 900 000 000<br>Lun–Vie · 9:00–20:00 h</p>
+                    </div>
+                </div>
+
+                <div class="support-card" onclick="Swal.fire({icon:'info', title:'Chat en vivo', text:'Usa el asistente BankFlow en la esquina inferior derecha para obtener ayuda inmediata.', confirmButtonColor:'#1a2a6c'})">
+                    <div class="support-card-icon" style="background:#e6fff5;">
+                        <i class="fas fa-comments" style="color:#00cc88;"></i>
+                    </div>
+                    <div>
+                        <h3>Chat con IA</h3>
+                        <p>Asistente inteligente disponible 24/7 para resolver dudas al instante.</p>
+                    </div>
+                </div>
+
+                <div class="support-card" onclick="Swal.fire({icon:'info', title:'Seguridad', text:'Si sospechas de actividad no autorizada en tu cuenta, llama inmediatamente al +34 900 000 001.', confirmButtonColor:'#1a2a6c'})">
+                    <div class="support-card-icon" style="background:#fff8e1;">
+                        <i class="fas fa-shield-alt" style="color:#f59e0b;"></i>
+                    </div>
+                    <div>
+                        <h3>Fraude y Seguridad</h3>
+                        <p>Línea directa de emergencia disponible las 24 horas del día.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="support-faq">
+                <h3><i class="fas fa-question-circle" style="margin-right:8px; color:#1a2a6c;"></i>Preguntas Frecuentes</h3>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Cómo realizo una transferencia?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Ve a <strong>Transferencias</strong> en el menú lateral, introduce el IBAN del destinatario, el importe y el concepto. El saldo se descuenta al instante y el receptor lo recibe de inmediato.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Qué es una hucha compartida?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Una hucha compartida es un fondo de ahorro grupal. Puedes invitar a otros usuarios de BankFlow por email y entre todos aportáis dinero hacia una meta común. Los fondos están protegidos hasta alcanzar el 100% de la meta.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Cómo cambio mi nombre de usuario?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Accede a <strong>Ajustes</strong> desde el menú lateral, modifica el campo de nombre y pulsa <em>Guardar Cambios</em>. El cambio se refleja en toda la aplicación de forma inmediata.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Por qué no puedo retirar dinero de una hucha?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Si la hucha tiene una meta definida y no ha llegado al 100%, solo puedes retirar la cantidad exacta que tú mismo has aportado. El dinero de otros participantes está protegido hasta que se alcance el objetivo.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        ¿Cómo funciona el Calendario de Pagos?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Puedes programar transferencias, suscripciones recurrentes y aportaciones automáticas a huchas. Cuando llega la fecha, BankFlow ejecuta la operación automáticamente si tienes saldo suficiente.</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <button id="btn-chat-toggle" class="chat-fab">
+        <span class="chat-icon">💬</span> Asistente IA
+    </button>
+    <div id="chat-container" class="chat-window" style="display: none;">
+        <div class="chat-header">
+            <span>Asistente BankFlow</span>
+            <button id="btn-close-chat" class="close-btn">×</button>
+        </div>
+        <div id="chat-messages" class="chat-body"></div>
+        <div class="chat-footer">
+            <input type="text" id="chat-input" placeholder="Escribe tu consulta...">
+        </div>
+    </div>
+
+    <script>
+  const _toggle = document.getElementById('sidebar-toggle');
+  const _sidebar = document.querySelector('.sidebar');
+  const _overlay = document.getElementById('sidebar-overlay');
+  if (_toggle && _sidebar && _overlay) {
+    _toggle.addEventListener('click', () => {
+      _sidebar.classList.toggle('open');
+      _overlay.classList.toggle('active');
+    });
+    _overlay.addEventListener('click', () => {
+      _sidebar.classList.remove('open');
+      _overlay.classList.remove('active');
+    });
+  }
+</script>
+    <script>
+        function toggleFaq(el) {
+            const item = el.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+    </script>
+    <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/transferencias.js"></script>
+</body>
+</html>

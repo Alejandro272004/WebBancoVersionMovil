@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BankFlow - Calendario de Pagos</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+<button class="sidebar-toggle" id="sidebar-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<div class="dashboard-container">
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>Bank<span>Flow</span></h1>
+        </div>
+        <nav class="nav-menu">
+            <p class="menu-label">Principal</p>
+            <a href="dashboard.html" class="nav-link"><i class="fas fa-home"></i> Resumen</a>
+            <a href="transferencias.html" class="nav-link"><i class="fas fa-exchange-alt"></i> Transferencias</a>
+            <a href="calendario.html" class="nav-link active"><i class="fas fa-calendar-alt"></i> Calendario de Pagos</a>
+            <p class="menu-label">Finanzas</p>
+            <a href="huchas.html" class="nav-link"><i class="fas fa-piggy-bank"></i> Huchas de Ahorro</a>
+            <a href="estadisticas.html" class="nav-link"><i class="fas fa-chart-line"></i> Estadísticas</a>
+            <a href="tarjetas.html" class="nav-link"><i class="fas fa-credit-card"></i> Mis Tarjetas</a>
+            <p class="menu-label">Personal</p>
+            <a href="ajustes.html" class="nav-link"><i class="fas fa-user-cog"></i> Ajustes</a>
+            <a href="soporte.html" class="nav-link"><i class="fas fa-headset"></i> Soporte</a>
+        </nav>
+        <div class="sidebar-footer">
+            <button id="btn-logout" class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <h1>Calendario de Pagos</h1>
+        </header>
+
+        <section class="calendar-layout" style="display: flex; gap: 25px; margin-top: 20px; flex-wrap: wrap;">
+
+            <div class="calendar-box" style="flex: 1.4; min-width: 320px; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                <div class="calendar-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <button id="btn-prev-month" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #1a2a6c;">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h2 id="calendar-month-year" style="color: #1a2a6c; font-size: 1.3rem; margin: 0; font-weight: 700;">---</h2>
+                    <button id="btn-next-month" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #1a2a6c;">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="weekdays-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: 600; color: #777; font-size: 0.85rem; margin-bottom: 10px;">
+                    <div>Lun</div><div>Mar</div><div>Mié</div><div>Jue</div><div>Vie</div><div>Sáb</div><div>Dom</div>
+                </div>
+
+                <div id="calendar-days-grid" style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px;"></div>
+            </div>
+
+            <div class="events-box" style="flex: 1; min-width: 280px; background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                <h3 style="color: #1a2a6c; font-size: 1.1rem; font-weight: 700; margin-top: 0; margin-bottom: 15px; border-bottom: 2px solid #efefef; padding-bottom: 8px;">
+                    <i class="fas fa-clock"></i> Pagos Programados
+                </h3>
+
+                <div id="lista-pagos-mes" style="flex: 1; max-height: 340px; overflow-y: auto; padding-right: 5px;">
+                    <p style="color: #aaa; font-size: 0.9rem; text-align: center; margin-top: 20px;">Cargando programación...</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</div>
+<button id="btn-chat-toggle" class="chat-fab">
+    <span class="chat-icon">💬</span> Asistente IA
+</button>
+
+<div id="chat-container" class="chat-window" style="display: none;">
+    <div class="chat-header">
+        <span>Asistente BankFlow</span>
+        <button id="btn-close-chat" class="close-btn">×</button>
+    </div>
+    <div id="chat-messages" class="chat-body">
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="chat-input" placeholder="Escribe tu consulta...">
+    </div>
+</div>
+
+<script>
+  const _toggle = document.getElementById('sidebar-toggle');
+  const _sidebar = document.querySelector('.sidebar');
+  const _overlay = document.getElementById('sidebar-overlay');
+  if (_toggle && _sidebar && _overlay) {
+    _toggle.addEventListener('click', () => {
+      _sidebar.classList.toggle('open');
+      _overlay.classList.toggle('active');
+    });
+    _overlay.addEventListener('click', () => {
+      _sidebar.classList.remove('open');
+      _overlay.classList.remove('active');
+    });
+  }
+</script>
+<script type="module" src="assets/js/calendario.js"></script>
+<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/transferencias.js"></script>
+</body>
+</html>
